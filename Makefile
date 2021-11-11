@@ -1,2 +1,2 @@
 cs:
-	mvnw spring-javaformat:apply
+	./mvnw spring-javaformat:apply
