@@ -10,10 +10,12 @@ import java.util.Map;
 
 @RestController
 public class PostController {
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        Map<String, String> map = new HashMap<>();
-        map.put("name", name);
-        return JSONObject.valueToString(map);
-    }
+
+	@GetMapping("/hello")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		Map<String, String> map = new HashMap<>();
+		map.put("name", name);
+		return JSONObject.valueToString(map);
+	}
+
 }
