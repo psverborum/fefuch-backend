@@ -1,4 +1,4 @@
-package com.verborum.fefuchbackend.Controllers;
+package com.verborum.fefuchbackend.Controller;
 
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
