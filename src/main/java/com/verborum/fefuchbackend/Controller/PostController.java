@@ -39,7 +39,8 @@ public class PostController {
 	public @ResponseBody ResponseEntity<Post> getOne(@PathVariable Long id) {
 		Optional<Post> optPost = postRepository.findById(id);
 
-		return optPost.map(post -> new ResponseEntity<>(post, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT));
+		return optPost.map(post -> new ResponseEntity<>(post, HttpStatus.OK))
+				.orElseGet(() -> new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT));
 	}
 
 }
