@@ -9,31 +9,38 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@ManyToOne
+	@JoinColumn(name = "id", insertable=false, updatable=false)
+	@Column(nullable = false)
+	private User user;
+
+	@Column(nullable = false)
 	private String text;
 
-	private String sender;
+	@Column(nullable = false)
+	private boolean enabled;
 
-	public Post(String sender, String text) {
-		this.sender = sender;
-		this.text = text;
-	}
-
-	public Post() {
-		sender = null;
-		text = null;
-	}
-
-	@Override
-	public String toString() {
-		return String.format("{\"id\": %d, \"sender\": %s, \"text\": %s}", id, sender, text);
-	}
+	@ManyToOne
+	@JoinColumn(name = "id", insertable=false, updatable=false)
+	@Column(nullable = false)
+	private Thread thread;
 
 	public Long getId() {
 		return id;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public Post setUser(User user) {
+		this.user = user;
+
+		return this;
+	}
+
 	public String getText() {
-		return text;
+		return enabled ? text : "<<<пост удалён>>>";
 	}
 
 	public Post setText(String text) {
@@ -42,14 +49,23 @@ public class Post {
 		return this;
 	}
 
-	public String getSender() {
-		return sender;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public Post setSender(String sender) {
-		this.sender = sender;
+	public Post setEnabled(boolean enabled) {
+		this.enabled = enabled;
 
 		return this;
 	}
 
+	public Thread getThread() {
+		return thread;
+	}
+
+	public Post setThread(Thread thread) {
+		this.thread = thread;
+
+		return this;
+	}
 }

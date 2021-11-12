@@ -24,7 +24,7 @@ public class PostController {
 
 	@PostMapping(path = "/add")
 	public @ResponseBody ResponseEntity<Post> addPost(@RequestBody String text) {
-		Post post = new Post(fetchClientIpAddress(), text);
+		Post post = new Post();
 		postRepository.save(post);
 
 		return new ResponseEntity<>(post, HttpStatus.OK);
