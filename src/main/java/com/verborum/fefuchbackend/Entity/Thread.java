@@ -11,7 +11,7 @@ public class Thread {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@JoinColumn(referencedColumnName = "id", name = "user_id", insertable = false, updatable = false, nullable = false)
 	private User user;
 
 	@Column(nullable = false)

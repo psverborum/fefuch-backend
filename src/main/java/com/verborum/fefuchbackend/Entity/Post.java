@@ -10,17 +10,17 @@ public class Post {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@JoinColumn(referencedColumnName = "id", name = "user_id", updatable = false, nullable = false)
 	private User user;
 
 	@Column(nullable = false)
 	private String text;
 
 	@Column(nullable = false)
-	private boolean enabled;
+	private boolean enabled = true;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable = false, updatable = false)
+	@JoinColumn(referencedColumnName = "id", name = "thread_id", updatable = false, nullable = false)
 	private Thread thread;
 
 	public Long getId() {

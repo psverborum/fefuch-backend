@@ -5,4 +5,6 @@ import com.verborum.fefuchbackend.Entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
+    User findUserByIp(String ip);
+
 }

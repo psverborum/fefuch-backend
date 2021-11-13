@@ -14,7 +14,7 @@ public class User {
 	private String ip;
 
 	@Column(nullable = false)
-	private boolean banned;
+	private boolean banned = false;
 
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
