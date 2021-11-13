@@ -1,9 +1,10 @@
 package com.verborum.fefuchbackend.Entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Post {
+public class Thread {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,9 +20,8 @@ public class Post {
 	@Column(nullable = false)
 	private boolean enabled = true;
 
-	@ManyToOne
-	@JoinColumn(referencedColumnName = "id", name = "thread_id", updatable = false, nullable = false)
-	private Thread thread;
+    @OneToMany(mappedBy = "thread")
+    private List<Post> posts;
 
 	public Long getId() {
 		return id;
@@ -31,7 +31,7 @@ public class Post {
 		return user;
 	}
 
-	public Post setUser(User user) {
+	public Thread setUser(User user) {
 		this.user = user;
 
 		return this;
@@ -41,7 +41,7 @@ public class Post {
 		return enabled ? text : "<<<пост удалён>>>";
 	}
 
-	public Post setText(String text) {
+	public Thread setText(String text) {
 		this.text = text;
 
 		return this;
@@ -51,20 +51,32 @@ public class Post {
 		return enabled;
 	}
 
-	public Post setEnabled(boolean enabled) {
+	public Thread setEnabled(boolean enabled) {
 		this.enabled = enabled;
 
-		return this;
-	}
+        return this;
+    }
 
-	public Thread getThread() {
-		return thread;
-	}
+    public List<Post> getPosts() {
+        return posts;
+    }
 
-	public Post setThread(Thread thread) {
-		this.thread = thread;
+    public Thread setPosts(List<Post> posts) {
+        this.posts = posts;
 
-		return this;
-	}
+        return this;
+    }
+
+    public Thread addPost(Post post) {
+        posts.add(post);
+
+        return this;
+    }
+
+    public Thread removePost(Post post) {
+        posts.remove(post);
+
+        return this;
+    }
 
 }
