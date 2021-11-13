@@ -19,7 +19,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
 
-	@OneToMany(mappedBy = "thread")
+	@OneToMany(mappedBy = "user")
 	private List<Thread> threads;
 
 	public Long getId() {

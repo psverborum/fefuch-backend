@@ -10,8 +10,7 @@ public class Post {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable=false, updatable=false)
-	@Column(nullable = false)
+	@JoinColumn(name = "id", insertable = false, updatable = false)
 	private User user;
 
 	@Column(nullable = false)
@@ -21,8 +20,7 @@ public class Post {
 	private boolean enabled;
 
 	@ManyToOne
-	@JoinColumn(name = "id", insertable=false, updatable=false)
-	@Column(nullable = false)
+	@JoinColumn(name = "id", insertable = false, updatable = false)
 	private Thread thread;
 
 	public Long getId() {
@@ -68,4 +66,5 @@ public class Post {
 
 		return this;
 	}
+
 }
