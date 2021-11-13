@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/post")
-public class PostController {
+public class PostController implements BaseController {
 
 	private final PostRepository postRepository;
 	private final UserRepository userRepository;
@@ -91,17 +91,6 @@ public class PostController {
 
 		return optPost.map(post -> new ResponseEntity<>(post, HttpStatus.OK))
 				.orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NO_CONTENT));
-	}
-
-	@SuppressWarnings("ConstantConditions")
-	protected String fetchClientIpAddress() {
-		HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.getRequestAttributes()))
-				.getRequest();
-		String ip = Optional.ofNullable(request.getHeader("X-FORWARDED-FOR")).orElse(request.getRemoteAddr());
-		if (ip.equals("0:0:0:0:0:0:0:1"))
-			ip = "127.0.0.1";
-		Assert.isTrue(ip.chars().filter($ -> $ == '.').count() == 3, "Illegal IP: " + ip);
-		return ip;
 	}
 
 }

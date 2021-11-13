@@ -11,14 +11,14 @@ public class Thread {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "id", name = "user_id", insertable = false, updatable = false, nullable = false)
+	@JoinColumn(referencedColumnName = "id", name = "user_id", updatable = false, nullable = false)
 	private User user;
 
 	@Column(nullable = false)
 	private String text;
 
 	@Column(nullable = false)
-	private boolean enabled;
+	private boolean enabled = true;
 
     @OneToMany(mappedBy = "thread")
     private List<Post> posts;
